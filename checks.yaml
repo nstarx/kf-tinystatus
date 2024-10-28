@@ -1,0 +1,92 @@
+- title: 'NStarX Apps'
+  checks:
+
+    - name: Spark Admin
+      type: http
+      url: http://sparkadmin-service.dev.svc.cluster.local/spark-admin/
+      host: http://sparkadmin-service.dev.svc.cluster.local/spark-admin/
+      expected_code: 200
+
+    - name: SFTPgo http
+      type: http
+      url: http://sftpgo-http.s3-sftp-server.svc.cluster.local:80/
+      host: http://sftpgo-http.s3-sftp-server.svc.cluster.local:80/
+      expected_code: 200
+
+- title: 'System Apps'
+  checks:
+    - name: MLFlow
+      type: http
+      host: http://mlflow-edge-tracking.dev
+      url: http://mlflow-edge-tracking.dev
+      expected_code: 200
+
+
+    - name: Pipeline UI
+      type: http
+      url: http://ml-pipeline-ui-artifact.dev.svc.cluster.local/
+      host: http://ml-pipeline-ui-artifact.dev.svc.cluster.local/
+      expected_code: 200
+
+
+
+- title: 'System Services'
+  checks:
+
+    - name: KServe UI
+      type: http
+      url: http://kserve-models-web-app.kubeflow.svc.cluster.local/
+      host: http://kserve-models-web-app.kubeflow.svc.cluster.local/
+      expected_code: 403
+
+
+    - name: Grafana
+      type: http
+      url: http://grafana.istio-system.svc.cluster.local:3000/
+      host: http://grafana.istio-system.svc.cluster.local:3000/
+      expected_code: 200
+
+    - name: Prometheus
+      type: http
+      url: http://prometheus.istio-system.svc.cluster.local:9090/
+      host: http://prometheus.istio-system.svc.cluster.local:9090/
+      expected_code: 200
+
+
+    - name: Kiali
+      type: http
+      url: http://kiali.istio-system.svc.cluster.local:20001/
+      host: http://kiali.istio-system.svc.cluster.local:20001/
+      expected_code: 200
+
+    - name: AuthService
+      type: http
+      url: http://authservice.istio-system.svc.cluster.local:8080/
+      host: http://authservice.istio-system.svc.cluster.local:8080/
+      expected_code: 200
+
+
+
+- title: 'Core Services'
+  checks:
+    - name: Pipeline MySQL
+      type: port
+      port: 3306
+      url: mysql.kubeflow.svc.cluster.local
+      host: mysql.kubeflow.svc.cluster.local
+      expected_code: 200
+
+
+    - name: Minio
+      type: port
+      port: 9000
+      url: minio-service.kubeflow.svc.cluster.local
+      host: minio-service.kubeflow.svc.cluster.local
+      expected_code: 200
+
+    - name: Metadata
+      type: port
+      port: 9090
+      url: metadata-envoy-service.kubeflow.svc.cluster.local
+      host: metadata-envoy-service.kubeflow.svc.cluster.local
+      expected_code: 200
